@@ -1,30 +1,46 @@
+import PropTypes from 'prop-types'
+import { getRandomHexColor } from 'utils/randomHexColor'
+import css from 'components/statistics/Statistics.module.css'
 
 
-// import data from '/path/to/data.json';
+// створюємо компонент реакт
+// якщо title  не переданий, не повинна рендеритись розмітка заголовка <h2>
+// у розмітку підгружається масив з файлу data.json
 
-// <Statistics title="Upload stats" stats={data} />
-// <Statistics stats={data} />
+export const Statistics = ({ title, stats }) => {
+  return (
+    <section className={css.statistics}>
+      {/* {title && <h2 className={css.title}>{title}</h2>} */}
+      <h2 className={css.title}> Upload stats</h2>
+
+      <ul className={css.statList}>
+        {stats.map(({ id, label, percentage }) => {
+          return (
+            <li
+              key={id}
+              className={css.item}
+              style={{ backgroundColor: getRandomHexColor(), }}
+            >
+              <span className={css.label}>{label}</span>
+              <span className={css.percentage}>{percentage}%</span>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
 
 
-{/* <section class="statistics">
-  <h2 class="title">Upload stats</h2>
+Statistics.propTypes = {
+  title: PropTypes.string,
+  stats: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.string.isRequired,
+      percentage: PropTypes.number.isRequired,
+    })
+  ),
+};
 
-  <ul class="stat-list">
-    <li class="item">
-      <span class="label">.docx</span>
-      <span class="percentage">4%</span>
-    </li>
-    <li class="item">
-      <span class="label">.mp3</span>
-      <span class="percentage">14%</span>
-    </li>
-    <li class="item">
-      <span class="label">.pdf</span>
-      <span class="percentage">41%</span>
-    </li>
-    <li class="item">
-      <span class="label">.mp4</span>
-      <span class="percentage">12%</span>
-    </li>
-  </ul>
-</section> */}
+

@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import css from 'components/profile/Profile.module.css';
+import PropTypes from 'prop-types'
+import css from 'components/profile/Profile.module.css'
 
 // створюємо компонент реакт
 
-export const Profile = props => {
-  const { username, tag, location, avatar, stats } = props
+export const Profile = (props) => {
+const { username, tag, location, avatar, stats } = props
   return (
     <div className={css.profile}>
       <div className={css.description}>
@@ -30,7 +30,7 @@ export const Profile = props => {
       </ul>
     </div>
   )
-}
+  }
 
 Profile.propTypes = {
   username: PropTypes.string.isRequired,
