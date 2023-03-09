@@ -2,12 +2,10 @@
 
 import { Profile } from 'components/profile/Profile'
 import { Statistics } from 'components/statistics/Statistics'
-import { FriendList } from 'components/friendList/FriendList'
-import { TransactionHistory } from 'components/transactionHistory/TransactionHistory'
+
 //підключаємо папки з  масивами даних стосовно користувача тощо
 import data from 'serverBase/data.json'
-import friends from 'serverBase/friends.json'
-import transactions from 'serverBase/transactions.json'
+
 import user from 'serverBase/user.json'
 
 //  експортуємо та рендерім у браузер
